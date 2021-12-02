@@ -51,7 +51,7 @@ public class App2 {
 		JButton idProjeto = new JButton("idProjeto");
 		idProjeto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Aplicacaoooo l= new Aplicacaoooo();
+				Aplicacao l= new Aplicacao();
 				l.idprojeto();
 			}
 		});
@@ -61,7 +61,7 @@ public class App2 {
 		JButton btnNewButton = new JButton("membros");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Aplicacaoooo l= new Aplicacaoooo ();
+				Aplicacao l= new Aplicacao ();
 				l.members();
 			}
 		});
@@ -71,7 +71,7 @@ public class App2 {
 		JButton btnNewButton_1 = new JButton("Informações");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Aplicacaoooo l= new Aplicacaoooo();
+				Aplicacao l= new Aplicacao();
 				l.idprojeto();
 				l.members();
 				System.out.println("Data de ínicio: 25 setembro");
