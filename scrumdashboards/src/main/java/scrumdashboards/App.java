@@ -3,16 +3,13 @@ package ESGRUPO8.esgrupo8;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
-import Aplicacaoooo;
-import App;
-
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class App2 {
+public class App extends JFrame {
 
 	private JFrame frame;
 
@@ -23,7 +20,7 @@ public class App2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App2 window = new App2();
+					App window = new App();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +32,7 @@ public class App2 {
 	/**
 	 * Create the application.
 	 */
-	public App2() {
+	public App() {
 		initialize();
 	}
 
@@ -48,37 +45,50 @@ public class App2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton idProjeto = new JButton("idProjeto");
-		idProjeto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Aplicacao l= new Aplicacao();
-				l.idprojeto();
-			}
-		});
-		idProjeto.setBounds(345, 213, 89, 48);
-		frame.getContentPane().add(idProjeto);
-		
-		JButton btnNewButton = new JButton("membros");
+		JButton btnNewButton = new JButton("Items do ProductBackLog");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Aplicacao l= new Aplicacao ();
-				l.members();
+			public void actionPerformed(ActionEvent arg0) {
+				Aplicacao3 l= new Aplicacao3 ();
+				l.prodbcklog();
+				JOptionPane.showMessageDialog(null, l.prodbcklog(), " teste " ,JOptionPane.PLAIN_MESSAGE);
 			}
 		});
-		btnNewButton.setBounds(178, 211, 107, 50);
+		btnNewButton.setBounds(26, 138, 127, 45);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Informações");
+		JButton btnNewButton_1 = new JButton("Texto dos Sprints");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Aplicacao l= new Aplicacao();
-				l.idprojeto();
-				l.members();
-				System.out.println("Data de ínicio: 25 setembro");
+			public void actionPerformed(ActionEvent arg0) {
+				Aplicacao3 l= new Aplicacao3();
+				l.getSprintText();
+				JOptionPane.showMessageDialog(null, l.getSprintText(), " teste " ,JOptionPane.PLAIN_MESSAGE);
 			}
 		});
-		btnNewButton_1.setBounds(163, 100, 107, 50);
+		btnNewButton_1.setBounds(26, 82, 127, 45);
 		frame.getContentPane().add(btnNewButton_1);
-		//f
-	}
+		
+		JButton btnNewButton_2 = new JButton("Informações");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Aplicacao3 l= new Aplicacao3();
+				l.idprojeto();
+				l.members();
+				JOptionPane.showMessageDialog(null, l.idprojeto() + "\n " + l.members() + l.dataInicio(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+
+			}
+		});
+		btnNewButton_2.setBounds(126, 11, 127, 60);
+		frame.getContentPane().add(btnNewButton_2);
+	
+	JButton btnNewButton_3 = new JButton("Sair");
+	btnNewButton_3.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			System.exit(0);
+		}
+	});
+	btnNewButton_3.setBounds(289, 210, 89, 23);
+	frame.getContentPane().add(btnNewButton_3);
+}
+
 }
