@@ -13,7 +13,7 @@ import com.julienvey.trello.impl.TrelloImpl;
 import com.julienvey.trello.impl.http.ApacheHttpClient;
 
 
-public class Aplicacao3 
+public class Aplicacao 
 {
     private static final String Token_utilizador = "e7343a347547e46213b153251f83183fc676a1cfd681016161bc0c10aada20ba";
     private static final String Key_utilizado = "9c85119a6d1dbcf03a104a12056029b7";

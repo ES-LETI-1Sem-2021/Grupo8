@@ -12,7 +12,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class App2 extends JFrame {
+public class App extends JFrame {
 
 	private JFrame frame;
 
@@ -23,7 +23,7 @@ public class App2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App2 window = new App2();
+					App window = new App();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class App2 extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public App2() {
+	public App() {
 		initialize();
 	}
 
@@ -51,7 +51,7 @@ public class App2 extends JFrame {
 		JButton btnNewButton = new JButton("Items do ProductBackLog");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao3 l= new Aplicacao3 ();
+				Aplicacao l= new Aplicacao();
 				l.prodbcklog();
 				JTextArea textArea = new JTextArea(l.prodbcklog());
 	            JScrollPane scrollPane = new JScrollPane(textArea);
@@ -68,7 +68,7 @@ public class App2 extends JFrame {
 		JButton btnNewButton_1 = new JButton("Texto dos Sprints");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao3 l= new Aplicacao3();
+				Aplicacao l= new Aplicacao();
 				l.getSprintText();
 				JTextArea textArea = new JTextArea(l.getSprintText());
 	            JScrollPane scrollPane = new JScrollPane(textArea);
@@ -85,7 +85,7 @@ public class App2 extends JFrame {
 		JButton btnNewButton_2 = new JButton("Informações");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao3 l= new Aplicacao3();
+				Aplicacao l= new Aplicacao();
 				JOptionPane.showMessageDialog(null, l.idprojeto() + "\n " + l.members() + l.dataInicio(), " Informações " ,JOptionPane.PLAIN_MESSAGE);
 
 			}
@@ -106,7 +106,7 @@ public class App2 extends JFrame {
 	JButton btnNewButton_4 = new JButton("Data de Inicio e de Fim de cada planning");
 	btnNewButton_4.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Aplicacao3 l= new Aplicacao3();
+			Aplicacao l= new Aplicacao();
 			JOptionPane.showMessageDialog(null, l.dataInicioFim() + "\n", " Datas de inicio e fim de cada sprint " ,JOptionPane.PLAIN_MESSAGE);
 		}
 	});
@@ -116,7 +116,7 @@ public class App2 extends JFrame {
 	JButton btnNewButton_5 = new JButton("Data de Inicio e Fim das Funções");
 	btnNewButton_5.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Aplicacao3 l= new Aplicacao3();
+			Aplicacao l= new Aplicacao();
 			l.datasTestesFuncoes();
 			
 			JTextArea textArea = new JTextArea(l.datasTestesFuncoes());
