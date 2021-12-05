@@ -4,12 +4,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class App extends JFrame {
+public class App2 extends JFrame {
 
 	private JFrame frame;
 
@@ -20,7 +23,7 @@ public class App extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App window = new App();
+					App2 window = new App2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +35,7 @@ public class App extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public App() {
+	public App2() {
 		initialize();
 	}
 
@@ -50,7 +53,13 @@ public class App extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Aplicacao3 l= new Aplicacao3 ();
 				l.prodbcklog();
-				JOptionPane.showMessageDialog(null, l.prodbcklog(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+				JTextArea textArea = new JTextArea(l.prodbcklog());
+	            JScrollPane scrollPane = new JScrollPane(textArea);
+	            textArea.setLineWrap(true);
+	            textArea.setWrapStyleWord(true); 
+	            scrollPane.setPreferredSize( new Dimension( 500, 500 ) );
+	            JOptionPane.showMessageDialog(null, scrollPane, " Product Backlog de cada Sprint " ,JOptionPane.PLAIN_MESSAGE);
+				
 			}
 		});
 		btnNewButton.setBounds(26, 138, 127, 45);
@@ -61,7 +70,13 @@ public class App extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Aplicacao3 l= new Aplicacao3();
 				l.getSprintText();
-				JOptionPane.showMessageDialog(null, l.getSprintText(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+				JTextArea textArea = new JTextArea(l.getSprintText());
+	            JScrollPane scrollPane = new JScrollPane(textArea);
+	            textArea.setLineWrap(true);
+	            textArea.setWrapStyleWord(true); 
+	            scrollPane.setPreferredSize( new Dimension( 500, 500 ) );
+	            JOptionPane.showMessageDialog(null, scrollPane, " Texto dos Sprints " ,JOptionPane.PLAIN_MESSAGE);
+				
 			}
 		});
 		btnNewButton_1.setBounds(26, 82, 127, 45);
@@ -71,9 +86,7 @@ public class App extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Aplicacao3 l= new Aplicacao3();
-				l.idprojeto();
-				l.members();
-				JOptionPane.showMessageDialog(null, l.idprojeto() + "\n " + l.members() + l.dataInicio(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, l.idprojeto() + "\n " + l.members() + l.dataInicio(), " Informações " ,JOptionPane.PLAIN_MESSAGE);
 
 			}
 		});
@@ -89,6 +102,34 @@ public class App extends JFrame {
 	});
 	btnNewButton_3.setBounds(289, 210, 89, 23);
 	frame.getContentPane().add(btnNewButton_3);
+	
+	JButton btnNewButton_4 = new JButton("Data de Inicio e de Fim de cada planning");
+	btnNewButton_4.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Aplicacao3 l= new Aplicacao3();
+			JOptionPane.showMessageDialog(null, l.dataInicioFim() + "\n", " Datas de inicio e fim de cada sprint " ,JOptionPane.PLAIN_MESSAGE);
+		}
+	});
+	btnNewButton_4.setBounds(26, 194, 227, 56);
+	frame.getContentPane().add(btnNewButton_4);
+	
+	JButton btnNewButton_5 = new JButton("Data de Inicio e Fim das Funções");
+	btnNewButton_5.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Aplicacao3 l= new Aplicacao3();
+			l.datasTestesFuncoes();
+			
+			JTextArea textArea = new JTextArea(l.datasTestesFuncoes());
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            textArea.setLineWrap(true);
+            textArea.setWrapStyleWord(true); 
+            scrollPane.setPreferredSize( new Dimension( 500, 500 ) );
+            JOptionPane.showMessageDialog(null, scrollPane, " teste " ,JOptionPane.PLAIN_MESSAGE);
+		}
+	});
+	btnNewButton_5.setBounds(275, 104, 103, 56);
+	frame.getContentPane().add(btnNewButton_5);
+	}
+	
 }
-
-}
+	
