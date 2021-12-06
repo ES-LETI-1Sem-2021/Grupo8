@@ -1,6 +1,7 @@
 package ESGRUPO8.esgrupo8;
 
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class App extends JFrame {
@@ -129,6 +131,35 @@ public class App extends JFrame {
 	});
 	btnNewButton_5.setBounds(275, 104, 103, 56);
 	frame.getContentPane().add(btnNewButton_5);
+	
+	JButton btnNewButton_6 = new JButton("PrevistasGastas");
+	btnNewButton_6.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Aplicacao3 l= new Aplicacao3();
+			l.horasPrevistasGastas();
+			JOptionPane.showMessageDialog(null, l.horasPrevistasGastas(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+		}
+	});
+	btnNewButton_6.setBounds(26, 261, 103, 56);
+	frame.getContentPane().add(btnNewButton_6);
+	
+	JButton btnNewButton_7 = new JButton("Conteúdo do README");
+	btnNewButton_7.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			git g= new git();
+			try {
+				JOptionPane.showMessageDialog(null, g.getReadme(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+			} catch (HeadlessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	});
+	btnNewButton_7.setBounds(253, 224, 89, 23);
+	frame.getContentPane().add(btnNewButton_7);
 	}
 	
 }

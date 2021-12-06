@@ -3,6 +3,7 @@ package ESGRUPO8.esgrupo8;
 import java.util.List;
 
 import com.julienvey.trello.Trello;
+import com.julienvey.trello.domain.Action;
 import com.julienvey.trello.domain.Argument;
 import com.julienvey.trello.domain.Board;
 import com.julienvey.trello.domain.Card;
@@ -191,6 +192,32 @@ public class Aplicacao
     }
         return sprintText;
 }
-
+    public static String horasPrevistasGastas() {
+    	String horas="";
+    	double spent = 0;
+    	double estimated = 0;
+    	List<Card> cardtime = trelloApi.getListCards("6179c501e90a71294b548e59");
+    	for(Card prev : cardtime ) {
+    		List<Action> acao = prev.getActions();
+    		System.out.println(prev.getActions());
+    		for(Action a : acao) {
+    			if( a.getData().getText() != null && a.getData().getText().contains("plus!")  ) {
+    			String str = a.getData().getText();
+    	        String[] arrOfStr = str.split(" ", 2);
+    	        String[] arrOfStr1 = arrOfStr[1].split("/", 2);
+    			System.out.println(arrOfStr1[0] + " " +arrOfStr1[1]);
+    			spent +=  Double.parseDouble(arrOfStr1[0]);
+    			estimated += Double.parseDouble(arrOfStr1[1]);
+    		}
+    		}
+    	}
+    	horas = "Spent: " + spent + " Estimated: " + estimated;
+    	System.out.println(spent);
+    	System.out.println(estimated);
+    	return horas;
+    	
+    }
+            
+        }
         
     }
