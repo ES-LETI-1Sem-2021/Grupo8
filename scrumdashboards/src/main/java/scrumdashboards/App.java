@@ -7,16 +7,43 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+
+import com.julienvey.trello.domain.Member;
+
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class App extends JFrame {
+public class App2<JFreeChart, PiePlot, PieDataset> extends JFrame {
 
+	
 	private JFrame frame;
+	public int custoHora;
+	private JTextField custo;
+	private JTextField textField;
+	
+//	public App2(String appTitle, String chartTitle) {
+	//	PieDataset dataset = createDataset();
+	//	JFreeChart chart = createChart(dataset,chartTitle);
+	//	ChartPanel chartPanel = new ChartPanel(chart);
+	//	chartPanel.setPreferredSize(new java.awt.Dimension(500,300));
+	//	setContentPane(chartPanel);
+		
+//	}
+	//private PieDataset createDataset() {
+	//	DefaultPieDataset result = new DefaultPieDataset();
+	//}
 
 	/**
 	 * Launch the application.
@@ -25,7 +52,7 @@ public class App extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App window = new App();
+					App2 window = new App2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +64,7 @@ public class App extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public App() {
+	public App2() {
 		initialize();
 	}
 
@@ -53,7 +80,7 @@ public class App extends JFrame {
 		JButton btnNewButton = new JButton("Items do ProductBackLog");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao l= new Aplicacao();
+				TrelloApi l= new TrelloApi();
 				l.prodbcklog();
 				JTextArea textArea = new JTextArea(l.prodbcklog());
 	            JScrollPane scrollPane = new JScrollPane(textArea);
@@ -70,7 +97,7 @@ public class App extends JFrame {
 		JButton btnNewButton_1 = new JButton("Texto dos Sprints");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao l= new Aplicacao();
+				TrelloApi l= new TrelloApi();
 				l.getSprintText();
 				JTextArea textArea = new JTextArea(l.getSprintText());
 	            JScrollPane scrollPane = new JScrollPane(textArea);
@@ -87,7 +114,7 @@ public class App extends JFrame {
 		JButton btnNewButton_2 = new JButton("Informações");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Aplicacao l= new Aplicacao();
+				TrelloApi l= new TrelloApi();
 				JOptionPane.showMessageDialog(null, l.idprojeto() + "\n " + l.members() + l.dataInicio(), " Informações " ,JOptionPane.PLAIN_MESSAGE);
 
 			}
@@ -108,7 +135,7 @@ public class App extends JFrame {
 	JButton btnNewButton_4 = new JButton("Data de Inicio e de Fim de cada planning");
 	btnNewButton_4.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Aplicacao l= new Aplicacao();
+			TrelloApi l= new TrelloApi();
 			JOptionPane.showMessageDialog(null, l.dataInicioFim() + "\n", " Datas de inicio e fim de cada sprint " ,JOptionPane.PLAIN_MESSAGE);
 		}
 	});
@@ -118,7 +145,7 @@ public class App extends JFrame {
 	JButton btnNewButton_5 = new JButton("Data de Inicio e Fim das Funções");
 	btnNewButton_5.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Aplicacao l= new Aplicacao();
+			TrelloApi l= new TrelloApi();
 			l.datasTestesFuncoes();
 			
 			JTextArea textArea = new JTextArea(l.datasTestesFuncoes());
@@ -135,9 +162,71 @@ public class App extends JFrame {
 	JButton btnNewButton_6 = new JButton("PrevistasGastas");
 	btnNewButton_6.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Aplicacao3 l= new Aplicacao3();
-			l.horasPrevistasGastas();
-			JOptionPane.showMessageDialog(null, l.horasPrevistasGastas(), " teste " ,JOptionPane.PLAIN_MESSAGE);
+			TrelloApi l= new TrelloApi();
+			//l.horasPrevistasGastas1();
+			DefaultPieDataset pieDataset = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset.setValue(m.getUsername() + "\nSprint1 Spent", (horas[0]));
+			pieDataset.setValue(m.getUsername() + "\nSprint1 Estimated", (horas[1]));
+		
+			}
+			JFreeChart chart= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset, true, true, true);
+			PiePlot p=(PiePlot)((org.jfree.chart.JFreeChart) chart).getPlot();
+			ChartFrame frame=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart);
+			frame.setVisible(true);
+			frame.setSize(650,700);
+			
+			
+			DefaultPieDataset pieDataset1 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset1.setValue(m.getUsername() + "\nSprint2 Spent", (horas[2]));
+			pieDataset1.setValue(m.getUsername() + "\nSprint2 Estimated", (horas[3]));
+			
+			}
+			JFreeChart chart1= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset1, true, true, true);
+			PiePlot p1=(PiePlot)((org.jfree.chart.JFreeChart) chart1).getPlot();
+			ChartFrame frame1=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart1);
+			frame1.setVisible(true);
+			frame1.setSize(650,700);
+			
+			
+			
+			DefaultPieDataset pieDataset2 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset1.setValue(m.getUsername() + "\nSprint3 Spent", (horas[4]));
+			pieDataset1.setValue(m.getUsername() + "\nSprint3 Estimated", (horas[5]));
+			
+			}
+			JFreeChart chart2= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset2, true, true, true);
+			PiePlot p2=(PiePlot)((org.jfree.chart.JFreeChart) chart1).getPlot();
+			ChartFrame frame2=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart2);
+			frame2.setVisible(true);
+			frame2.setSize(650,700);
+			
+			
+			
+			DefaultPieDataset pieDataset3 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset3.setValue(m.getUsername() + "\nTotalSprint Spent", (horas[6]));
+			pieDataset3.setValue(m.getUsername() + "\nTotalSprint Estimated", (horas[7]));
+			
+			}
+			JFreeChart chart3= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset3, true, true, true);
+			PiePlot p3=(PiePlot)((org.jfree.chart.JFreeChart) chart3).getPlot();
+			ChartFrame frame3=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart3);
+			frame3.setVisible(true);
+			frame3.setSize(650,700);
+			
+					
+				
 		}
 	});
 	btnNewButton_6.setBounds(26, 261, 103, 56);
@@ -146,7 +235,7 @@ public class App extends JFrame {
 	JButton btnNewButton_7 = new JButton("Conteúdo do README");
 	btnNewButton_7.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			git g= new git();
+			GitHubApi g= new GitHubApi();
 			try {
 				JOptionPane.showMessageDialog(null, g.getReadme(), " teste " ,JOptionPane.PLAIN_MESSAGE);
 			} catch (HeadlessException e1) {
@@ -156,11 +245,106 @@ public class App extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			
+			
 		}
 	});
 	btnNewButton_7.setBounds(253, 224, 89, 23);
 	frame.getContentPane().add(btnNewButton_7);
+	
+	
+	JButton btnNewButton_8 = new JButton("Custo");
+	btnNewButton_8.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			TrelloApi l = new TrelloApi();
+			if(textField.getText().isEmpty()) {
+				custoHora=20;
+				
+			}else {
+				try {
+					custoHora= Integer.valueOf(textField.getText());
+				}catch(Exception y) {
+					System.out.println("Só recebe Valores numéricos");
+					
+				}
+			}
+			DefaultPieDataset pieDataset = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset.setValue(m.getUsername() + "\nSprint1 Spent", (horas[0]*custoHora));
+			pieDataset.setValue(m.getUsername() + "\nSprint1 Estimated", (horas[1]*custoHora));
+		
+			}
+			JFreeChart chart= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset, true, true, true);
+			PiePlot p=(PiePlot)((org.jfree.chart.JFreeChart) chart).getPlot();
+			ChartFrame frame=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart);
+			frame.setVisible(true);
+			frame.setSize(650,700);
+			
+			
+			DefaultPieDataset pieDataset1 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset1.setValue(m.getUsername() + "\nSprint2 Spent", (horas[2]*custoHora));
+			pieDataset1.setValue(m.getUsername() + "\nSprint2 Estimated", (horas[3]*custoHora));
+			
+			}
+			JFreeChart chart1= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset1, true, true, true);
+			PiePlot p1=(PiePlot)((org.jfree.chart.JFreeChart) chart1).getPlot();
+			ChartFrame frame1=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart1);
+			frame1.setVisible(true);
+			frame1.setSize(650,700);
+			
+			
+			
+			DefaultPieDataset pieDataset2 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset1.setValue(m.getUsername() + "\nSprint3 Spent", (horas[4]*custoHora));
+			pieDataset1.setValue(m.getUsername() + "\nSprint3 Estimated", (horas[5]*custoHora));
+			
+			}
+			JFreeChart chart2= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset2, true, true, true);
+			PiePlot p2=(PiePlot)((org.jfree.chart.JFreeChart) chart1).getPlot();
+			ChartFrame frame2=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart2);
+			frame2.setVisible(true);
+			frame2.setSize(650,700);
+			
+			
+			
+			DefaultPieDataset pieDataset3 = new DefaultPieDataset();
+			for(Member m : l.getmemberlist()) {
+				double[] horas=l.horasPrevistasGastas1(m);
+			
+			pieDataset3.setValue(m.getUsername() + "\nTotalSprint Spent", (horas[6]*custoHora));
+			pieDataset3.setValue(m.getUsername() + "\nTotalSprint Estimated", (horas[7]*custoHora));
+			
+			}
+			JFreeChart chart3= (JFreeChart) ChartFactory.createPieChart("Pie Chart", pieDataset3, true, true, true);
+			PiePlot p3=(PiePlot)((org.jfree.chart.JFreeChart) chart3).getPlot();
+			ChartFrame frame3=new ChartFrame("Pie Chart", (org.jfree.chart.JFreeChart) chart3);
+			frame3.setVisible(true);
+			frame3.setSize(650,700);
+			
+			
+	}
+		
+	});
+	btnNewButton_8.setBounds(199, 106, 146, 45);
+	frame.getContentPane().add(btnNewButton_8);
+	
+	textField = new JTextField();
+	textField.setBounds(209, 165, 135, 45);
+	frame.getContentPane().add(textField);
+	textField.setColumns(10);
 	}
 	
 }
+	
+
 	
