@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ESGRUPO8.esgrupo8","l":"GitHubApi"},{"p":"ESGRUPO8.esgrupo8","l":"TrelloApi"}];updateSearchResults();
