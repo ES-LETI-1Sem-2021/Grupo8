@@ -6,3 +6,6 @@ Francisco Luz 92955
 Tomás Castilho 88988
 Gonçalo Gomes 92514
 
+As funcionalidades não implementadas foram os pontos do enunciado 10,11, 15 e o ponto 14 ficou incompleto.
+
+
