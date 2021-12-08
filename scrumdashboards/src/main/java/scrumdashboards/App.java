@@ -89,7 +89,6 @@ public class App<JFreeChart, PiePlot, PieDataset> extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TrelloApi l = new TrelloApi();
-				l.prodbcklog();
 				JTextArea textArea = new JTextArea(l.prodbcklog());
 				JScrollPane scrollPane = new JScrollPane(textArea);
 				textArea.setLineWrap(true);
@@ -111,7 +110,6 @@ public class App<JFreeChart, PiePlot, PieDataset> extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TrelloApi l = new TrelloApi();
-				l.getSprintText();
 				JTextArea textArea = new JTextArea(l.getSprintText());
 				JScrollPane scrollPane = new JScrollPane(textArea);
 				textArea.setLineWrap(true);
@@ -190,12 +188,17 @@ public class App<JFreeChart, PiePlot, PieDataset> extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnNewButton_7.setToolTipText("Aqui encontram-se as informações relativas ao conteúdo do READ.ME");
+		btnNewButton_7.setToolTipText("Aqui encontram-se as informações relativas ao conteúdo do README.md");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GitHubApi g = new GitHubApi();
 				try {
-					JOptionPane.showMessageDialog(null, g.getReadme(), " teste ", JOptionPane.PLAIN_MESSAGE);
+					JTextArea textArea = new JTextArea(g.getReadme());
+					JScrollPane scrollPane = new JScrollPane(textArea);
+					textArea.setLineWrap(true);
+					textArea.setWrapStyleWord(true);
+					scrollPane.setPreferredSize(new Dimension(500, 500));
+					JOptionPane.showMessageDialog(null, g.getReadme(), " README.md ", JOptionPane.PLAIN_MESSAGE);
 				} catch (HeadlessException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -248,7 +251,6 @@ public class App<JFreeChart, PiePlot, PieDataset> extends JFrame {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TrelloApi l = new TrelloApi();
-				l.datasTestesFuncoes();
 				JTextArea textArea = new JTextArea(l.datasTestesFuncoes());
 				JScrollPane scrollPane = new JScrollPane(textArea);
 				textArea.setLineWrap(true);
