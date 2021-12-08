@@ -1,0 +1,35 @@
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_8	B1	0/6
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_8	B1	0/6
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	frame	B1	0/4
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_1	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_2	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_3	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_4	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_5	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_6	B1	0/3
+ESGRUPO8.esgrupo8.Aplicacao	private void initialize() 	btnNewButton_7	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_1	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_2	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_3	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_4	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_5	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_6	B1	0/3
+ESGRUPO8.esgrupo8.App2	private void initialize() 	btnNewButton_7	B1	0/3
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint1estimated	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint1spent	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint2estimated	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint2spent	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint3estimated	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	sprint3spent	B1	10/13
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint1estimated	B3	9/11
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint1spent	B3	9/11
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint2estimated	B3	10/12
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint2spent	B3	10/12
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint3estimated	B3	10/12
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	sprint3spent	B3	10/12
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	estimated	B1	30/35
+ESGRUPO8.esgrupo8.TrelloApi	public static double[] horasPrevistasGastas1(com.julienvey.trello.domain.Member) 	spent	B1	30/35
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	estimated	B3	29/33
+ESGRUPO8.esgrupo8.TrelloApi	public static java.lang.String horasPrevistasGastas() 	spent	B3	29/33
